@@ -22,8 +22,8 @@
         <TextBox x:Name="EmailTextBox" Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding UserLoginDTO.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <Label Content="Password:" Grid.Row="1" Grid.Column="0" />
-        <TextBox x:Name="PasswordBox" Grid.Row="1" Grid.Column="1" Text="{Binding UserLoginDTO.Password}"  Margin="5"   />
+        <PasswordBox x:Name="PasswordBox" Grid.Row="1" Grid.Column="1" Margin="5" PasswordChar="*" />
 
-        <Button Content="Login" Grid.Row="2" Grid.Column="1" Margin="5" Command="{Binding LoginCommand}" />
+        <Button Click="Button_Click" Content="Login" Grid.Row="2" Grid.Column="1" Margin="5"   />
     </Grid>
 </Window>

@@ -26,9 +26,10 @@ namespace P04WeatherForecastAPI.Client.ViewModels
         [ObservableProperty]
         private UserLoginDTO userLoginDTO;
 
-        [RelayCommand]
-        public async Task Login()
+         
+        public async Task Login(string password)
         {
+            UserLoginDTO.Password = password;
             var response = await _authService.Login(UserLoginDTO);
             if (response.Success)
             {

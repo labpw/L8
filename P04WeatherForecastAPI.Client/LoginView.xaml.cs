@@ -20,10 +20,17 @@ namespace P04WeatherForecastAPI.Client
     /// </summary>
     public partial class LoginView : Window
     {
+        private readonly LoginViewModel _loginViewModel;
         public LoginView(LoginViewModel loginViewModel)
         {
+            _loginViewModel = loginViewModel;
             DataContext = loginViewModel;
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            _loginViewModel.Login(PasswordBox.Password);
         }
     }
 }
