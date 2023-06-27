@@ -20,9 +20,29 @@ namespace P05Shop.API.Services.AuthService
             _config = config;
         }
 
-        public Task<ServiceResponse<bool>> ChangePassword(int userId, string newPassword)
+        public async Task<ServiceResponse<bool>> ChangePassword(int userId, string newPassword)
         {
-            throw new NotImplementedException();
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null)
+            {
+                  return new ServiceResponse<bool>
+                  {
+                    Success = false,
+                    Message = "User not found."
+                };
+            }
+
+            CreatePasswordHash(newPassword, out byte[] passwordHash, out byte[] passwordSalt);
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+
+            await _context.SaveChangesAsync();
+            return new ServiceResponse<bool>
+            {
+                Data = true,
+                Message = "Password updated successfully.",
+                Success = true
+            };
         }
 
         public async Task<ServiceResponse<string>> Login(string email, string password)
