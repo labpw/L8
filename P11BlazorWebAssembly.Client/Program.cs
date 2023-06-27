@@ -24,3 +24,10 @@ builder.Services.AddHttpClient<IProductService, ProductService>(client => client
 builder.Services.AddSingleton(appSettingsSection);
 
 await builder.Build().RunAsync();
+
+
+
+
+
+//Microsoft.AspNetCore.Components.Authorization
+//Blazored.LocalStorage
