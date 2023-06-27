@@ -21,6 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P11BlazorWebAssembly.Client
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P12MAUI.Client", "P12MAUI.Client\P12MAUI.Client.csproj", "{BA445080-94BD-4284-92B2-4DD9F2EF5AFF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A16D454C-33D6-4C74-9766-F9D3205389A8}"
+	ProjectSection(SolutionItems) = preProject
+		Podsumowanie.txt = Podsumowanie.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,5 +71,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {000D9741-C472-48A9-849B-599CB8B2FEB2}
 	EndGlobalSection
 EndGlobal

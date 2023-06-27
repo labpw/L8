@@ -107,11 +107,29 @@ namespace P04WeatherForecastAPI.Client.ViewModels
         [RelayCommand]
         public void OpenShopWindow()
         {
-            ShopProductsView shopProductsView = _serviceProvider.GetService<ShopProductsView>();
-            ProductsViewModel productsViewModel = _serviceProvider.GetService<ProductsViewModel>();
+            if (!string.IsNullOrEmpty(LoginViewModel.Token))
+            {
+                ShopProductsView shopProductsView = _serviceProvider.GetService<ShopProductsView>();
+                ProductsViewModel productsViewModel = _serviceProvider.GetService<ProductsViewModel>();
 
-            shopProductsView.Show();
-            productsViewModel.GetProducts();
+                shopProductsView.Show();
+                productsViewModel.GetProducts();
+            }
+            else
+            {
+                
+            }
+            
+        }
+
+        [RelayCommand]
+        public void OpenLoginWindow()
+        {
+            LoginView loginView = _serviceProvider.GetService<LoginView>();
+            LoginViewModel loginViewModel = _serviceProvider.GetService<LoginViewModel>();
+
+            loginView.Show();
+             
         }
     }
 }

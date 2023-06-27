@@ -11,7 +11,7 @@ namespace P06Shop.Shared.Services.AuthService
 {
     public class AuthService : IAuthService
     {
-
+    
         private readonly HttpClient _httpClient;
         private readonly AppSettings _appSettings;
 
