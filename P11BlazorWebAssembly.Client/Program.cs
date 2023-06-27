@@ -1,8 +1,10 @@
+using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using P06Shop.Shared.Configuration;
+using P06Shop.Shared.Services.AuthService;
 using P06Shop.Shared.Services.ProductService;
 using P11BlazorWebAssembly.Client;
 
@@ -21,7 +23,9 @@ var uriBuilder = new UriBuilder(appSettingsSection.BaseAPIUrl)
 builder.Services.AddHttpClient<IProductService, ProductService>(client => client.BaseAddress = uriBuilder.Uri);
 //builder.Services.Configure<AppSettings>(appSettings);
 //builder.Services.AddSingleton<IOptions<AppSettings>>(new OptionsWrapper<AppSettings>(appSettingsSection));
+builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddSingleton(appSettingsSection);
+builder.Services.AddBlazoredLocalStorage();
 
 await builder.Build().RunAsync();
 

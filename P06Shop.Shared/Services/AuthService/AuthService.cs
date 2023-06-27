@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace P06Shop.Shared.Services.AuthService
 {
-    internal class AuthService : IAuthService
+    public class AuthService : IAuthService
     {
 
         private readonly HttpClient _httpClient;
