@@ -14,3 +14,9 @@
    - dodalismy strony do logowania i rejestracji
 
 
+3) wrozylismy autoryzacje po stronie klienta desktopowego 
+  - dodalismy widok logowania
+  - dodalismy viewmodel logowania
+  - wstrzyklenismy serwis AuthService do viewmodelu
+  - zaimplementowalismy prostą logię przechowywania tokena w pliku
+
