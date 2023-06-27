@@ -24,10 +24,17 @@ namespace P05Shop.API.Controllers
             return "secret";
         }
 
-        //public async Task<ActionResult<ServiceResponse<string>>> Login()
-        //{
-        //    return Ok("login");
-        //}
+        [HttpPost("login")]
+        public async Task<ActionResult<ServiceResponse<string>>> Login(UserLoginDTO userLoginDTO)
+        {
+            var response = await  _authService.Login(userLoginDTO.Email, userLoginDTO.Password);
+            if (!response.Success)
+            {
+                return BadRequest(response);
+            }
+
+            return Ok(response);
+        }
 
         [HttpPost("register")]
         public async Task<ActionResult<ServiceResponse<int>>> Register(UserRegisterDTO userRegisterDTO)
