@@ -29,7 +29,7 @@ namespace P06Shop.Shared.Services.ProductService
 
         public async Task<ServiceResponse<Product>> CreateProductAsync(Product product)
         {
-            var response = await _httpClient.PostAsJsonAsync(_appSettings.BaseProductEndpoint.GetAllProductsEndpoint, product);
+            var response = await _httpClient.PostAsJsonAsync(_appSettings.BaseProductEndpoint.Base_url + _appSettings.BaseProductEndpoint.GetAllProductsEndpoint, product);
             var result = await response.Content.ReadFromJsonAsync<ServiceResponse<Product>>();
             return result;
         }
@@ -38,7 +38,7 @@ namespace P06Shop.Shared.Services.ProductService
         {
             // jesli uzyjemy / na poczatku to wtedy sciezka trakktowana jest od root czyli pomija czesc środkową adresu 
             // zazwyczaj unikamy stosowania / na poczatku 
-            var response = await _httpClient.DeleteAsync($"{id}");
+            var response = await _httpClient.DeleteAsync(_appSettings.BaseProductEndpoint.Base_url + $"{id}");
             var result = await response.Content.ReadFromJsonAsync<ServiceResponse<bool>>();
             return result;
         }
@@ -64,7 +64,7 @@ namespace P06Shop.Shared.Services.ProductService
         {
             try
             {
-                var response = await _httpClient.GetAsync(_appSettings.BaseProductEndpoint.GetAllProductsEndpoint);
+                var response = await _httpClient.GetAsync(_appSettings.BaseProductEndpoint.Base_url);
                 if (!response.IsSuccessStatusCode)
                     return new ServiceResponse<List<Product>>
                     {
@@ -102,7 +102,7 @@ namespace P06Shop.Shared.Services.ProductService
 
         public async Task<ServiceResponse<Product>> GetProductByIdAsync(int id)
         {
-            var response = await _httpClient.GetAsync(id.ToString());
+            var response = await _httpClient.GetAsync(_appSettings.BaseProductEndpoint.Base_url + id.ToString());
             if (!response.IsSuccessStatusCode)
                 return new ServiceResponse<Product>
                 {
@@ -132,7 +132,7 @@ namespace P06Shop.Shared.Services.ProductService
         // wersja 2 
         public async Task<ServiceResponse<Product>> UpdateProductAsync(Product product)
         {
-            var response = await _httpClient.PutAsJsonAsync(_appSettings.BaseProductEndpoint.GetAllProductsEndpoint, product);
+            var response = await _httpClient.PutAsJsonAsync(_appSettings.BaseProductEndpoint.Base_url + _appSettings.BaseProductEndpoint.GetAllProductsEndpoint, product);
             var result = await response.Content.ReadFromJsonAsync<ServiceResponse<Product>>();
             return result;
         }
@@ -143,7 +143,7 @@ namespace P06Shop.Shared.Services.ProductService
             try
             {
                 string searchUrl = string.IsNullOrWhiteSpace(text) ? "" : $"/{text}";
-                var response = await _httpClient.GetAsync(_appSettings.BaseProductEndpoint.SearchProductsEndpoint + searchUrl + $"/{page}/{pageSize}");
+                var response = await _httpClient.GetAsync(_appSettings.BaseProductEndpoint.Base_url + _appSettings.BaseProductEndpoint.SearchProductsEndpoint + searchUrl + $"/{page}/{pageSize}");
                 if (!response.IsSuccessStatusCode)
                     return new ServiceResponse<List<Product>>
                     {

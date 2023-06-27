@@ -11,7 +11,7 @@
 <h3>Login</h3>
 
 
-<EditForm Model="userLoginDTO" OnInvalidSubmit="HandleLogin">
+<EditForm Model="userLoginDTO" OnValidSubmit="HandleLogin">
 
     <p>Email:</p>
     <InputText @bind-Value="userLoginDTO.Email" id="email"></InputText>
