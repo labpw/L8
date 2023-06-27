@@ -63,10 +63,11 @@ namespace P05Shop.API.Services.AuthService
             else
             {
                 response.Data = CreateToken(user);
+                response.Success = true;
+                response.Message = "Login successful.";
             }
 
-            response.Success = true;
-            response.Message = "Login successful.";
+           
             return response;
         }
 
