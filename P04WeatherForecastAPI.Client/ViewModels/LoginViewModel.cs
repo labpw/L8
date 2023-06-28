@@ -42,6 +42,11 @@ namespace P04WeatherForecastAPI.Client.ViewModels
             
         }
 
+        [RelayCommand]
+        public async Task MouseEnter()
+        {
+             
+        }
 
 
 

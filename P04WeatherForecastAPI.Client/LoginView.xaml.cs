@@ -32,5 +32,7 @@ namespace P04WeatherForecastAPI.Client
         {
             _loginViewModel.Login(PasswordBox.Password);
         }
+
+       
     }
 }
